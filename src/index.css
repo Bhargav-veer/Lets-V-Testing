@@ -1,0 +1,70 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Outfit', 'Prata', serif;
+  background: linear-gradient(120deg, #f8f6f3 0%, #fff 100%);
+  color: #222;
+}
+
+/* Simple Classic Toast Styles */
+.Toastify__toast {
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #222;
+  font-family: serif;
+  font-size: 1rem;
+  border-radius: 4px;
+  box-shadow: none;
+  padding: 0.75rem 1.25rem;
+}
+.Toastify__toast--error {
+  color: #c0392b;
+  background: #fff;
+  border-color: #c0392b;
+}
+.Toastify__toast--success {
+  color: #27ae60;
+  background: #fff;
+  border-color: #27ae60;
+}
+.Toastify__toast--warning {
+  color: #b8860b;
+  background: #fff;
+  border-color: #b8860b;
+}
+.Toastify__close-button {
+  color: #888;
+}
+
+a.active hr{
+    display: block;
+    background-color: rgb(43, 67, 125);
+}
+
+*{
+    font-family: Outfit;
+}
+
+.prata-regular {
+    font-family: "Prata", serif;
+    font-weight: 400;
+    font-style: normal;
+    
+  }
+
+  ::-webkit-scrollbar{
+    display: none;
+    
+  }
+  
+  @media (max-width:640px) {
+    a.active{
+        background-color: rgb(43, 67, 125);
+        color: white;
+        border-radius: 20px;
+    }
+  }
