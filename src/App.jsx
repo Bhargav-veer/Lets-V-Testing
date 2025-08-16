@@ -15,11 +15,19 @@ import SearchBar from './components/SearchBar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify'
+<<<<<<< HEAD
+=======
+import VAnimation from './components/VAnimation'
+>>>>>>> 93a1078 (changed some cart and other options)
 
 const App = () => {
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
       <ToastContainer />
+<<<<<<< HEAD
+=======
+      <VAnimation />
+>>>>>>> 93a1078 (changed some cart and other options)
       <Navbar />
       <SearchBar />
       <Routes>
