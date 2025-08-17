@@ -7,6 +7,9 @@ import { doc, setDoc, onSnapshot, serverTimestamp, getDoc } from "firebase/fires
 export const ShopContext = createContext();
 const GUEST_CART_KEY = "guest_cart_v1";
 
+// ✅ Backend API URL (Render)
+const API_BASE = "https://backend-testing-m0fc.onrender.com";
+
 const ShopContextProvider = (props) => {
   const currency = "Rs. ";
   const delivery_fee = 10;
@@ -59,7 +62,7 @@ const ShopContextProvider = (props) => {
     else writeGuestCart(updatedCart);
   };
 
-  // ---------------- Update Quantity (remove if 0) ----------------
+  // ---------------- Update Quantity ----------------
   const updateQuantity = async (itemId, size, quantity) => {
     const key = `${itemId}_${size}`;
     const updatedCart = structuredClone(cartItems);
@@ -83,7 +86,7 @@ const ShopContextProvider = (props) => {
     else writeGuestCart(updatedCart);
   };
 
-  // ---------------- Get Cart Count (robust) ----------------
+  // ---------------- Get Cart Count ----------------
   const getCartCount = () => {
     let total = 0;
     for (const key in cartItems) {
@@ -95,7 +98,7 @@ const ShopContextProvider = (props) => {
     return total;
   };
 
-  // ---------------- Get Cart Amount (robust) ----------------
+  // ---------------- Get Cart Amount ----------------
   const getCartAmount = () => {
     let total = 0;
     for (const key in cartItems) {
@@ -110,9 +113,7 @@ const ShopContextProvider = (props) => {
   // ---------------- Load Products ----------------
   const getProductsData = async () => {
     try {
-      const response = await fetch(
-        import.meta.env.VITE_BACKEND_URL + "/api/product/list"
-      );
+      const response = await fetch(`${API_BASE}/api/product/list`);
       const data = await response.json();
       if (data.success) setProducts(data.products.reverse());
       else toast.error(data.message);
@@ -174,10 +175,10 @@ const ShopContextProvider = (props) => {
     getCartCount,
     updateQuantity,
     getCartAmount,
-    removeFromCart, // <--- EXPORT THIS FUNCTION
+    removeFromCart,
     navigate,
     loadingCart,
-    clearCart: () => setCartItems({}), // simple clear cart
+    clearCart: () => setCartItems({}),
   };
 
   return (
