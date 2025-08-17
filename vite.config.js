@@ -1,15 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Detect if running on Netlify
-const isNetlify = process.env.NETLIFY === 'true';
+// Automatically set base for local/dev and GitHub Pages prod
+const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   plugins: [react()],
   server: { port: 5173 },
-<<<<<<< HEAD
-  base: isNetlify ? '/' : '/Lets-V-Testing/', // Change this to your repo name
-=======
-  base: '/', // Set base to root for all environments
->>>>>>> 93a1078 (changed some cart and other options)
+  // Use '/' for local development, '/Lets-V-Testing/' only for production (GitHub Pages)
+  base: isProduction ? '/Lets-V-Testing/' : '/',
 });
